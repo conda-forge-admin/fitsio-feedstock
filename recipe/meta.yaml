@@ -1,5 +1,5 @@
 {% set name = "fitsio" %}
-{% set version = "1.2.7" %}
+{% set version = "1.2.8" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/esheldon/fitsio/archive/refs/tags/{{ version }}.tar.gz
-  sha256: 356a425ce1c5c64e42685e1196f1d5fb43ec8fefb7f800232f756360e1a2a38a
+  sha256: 7539ac8e8093ea925ef23e81eab32252fcfc6a2b4edc9d18628fc1ac25f0c335
 
 build:
   number: 0
