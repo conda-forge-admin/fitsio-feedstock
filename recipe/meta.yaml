@@ -30,6 +30,7 @@ requirements:
     - python
     - pip
     - setuptools
+    - setuptools-scm
     - numpy
     - bzip2
     - libcurl
