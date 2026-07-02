@@ -1,6 +1,6 @@
 context:
   name: "fitsio"
-  version: "1.3.0"
+  version: "1.4.0"
 
 package:
   name: ${{ name }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 6ba04d3e24f6c18de99603d20aceb31f7f2f4514d7ce7a0e41fbb97e0e7b78c0
+  sha256: 7ece7c8234058b5a2c97f7b1259ff396f2d1e91e1cb263ceebd16dde63ab1b9f
 
 build:
   number: 0
