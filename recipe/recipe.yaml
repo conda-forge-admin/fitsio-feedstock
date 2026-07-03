@@ -43,8 +43,6 @@ requirements:
     - bzip2
     - libcurl
     - zlib
-    - if: win
-      then: cfitsio >=4.6.4
   run:
     - python
     - bzip2
