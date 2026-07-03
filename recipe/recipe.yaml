@@ -7,13 +7,15 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 7ece7c8234058b5a2c97f7b1259ff396f2d1e91e1cb263ceebd16dde63ab1b9f
+  git_url: https://github.com/esheldon/fitsio
+  git_rev: windows-ci
+  # url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
+  # sha256: 7ece7c8234058b5a2c97f7b1259ff396f2d1e91e1cb263ceebd16dde63ab1b9f
 
 build:
   number: 1
-  skip:
-    - win
+  # skip:
+  #   - win
 
 requirements:
   build:
@@ -35,6 +37,8 @@ requirements:
     - bzip2
     - libcurl
     - zlib
+    - if: win
+      then: cfitsio >=4.6.4
   run:
     - python
     - bzip2
@@ -44,7 +48,8 @@ requirements:
   # we put it in host to make configure happy
   ignore_run_exports:
     from_package:
-      - zlib
+      - if: win
+        then: zlib
 
 tests:
   - script:
