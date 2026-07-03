@@ -28,6 +28,8 @@ requirements:
       then:
         - libtool
         - make
+      else:
+        - cmake
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
   host:
