@@ -29,7 +29,8 @@ requirements:
         - libtool
         - make
       else:
-        - cmake
+        - cmake <4
+        - ninja
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
   host:
