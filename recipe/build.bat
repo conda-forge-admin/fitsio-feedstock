@@ -33,8 +33,8 @@ cd ..
 cd ..
 
 set FITSIO_USE_SYSTEM_FITSIO="True"
-set FITSIO_SYSTEM_FITSIO_INCLUDEDIR="cfitsio-prefix"
-set FITSIO_SYSTEM_FITSIO_LIBDIR="cfitsio-prefix"
+set FITSIO_SYSTEM_FITSIO_INCLUDEDIR="cfitsio-prefix\include"
+set FITSIO_SYSTEM_FITSIO_LIBDIR="cfitsio-prefix\lib"
 
 %PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 if errorlevel 1 exit 1
