@@ -22,7 +22,6 @@ cmake -G "NMake Makefiles" ^
   -D CMAKE_PREFIX_PATH=%SRC_DIR%\cfitsio-prefix ^
   -D CMAKE_INSTALL_PREFIX=%SRC_DIR%\cfitsio-prefix ^
   -D USE_CURL=On ^
-  -D USE_BZIP2=On ^
   -D BUILD_SHARED_LIBS=Off ^
   ..
 if errorlevel 1 exit 1
