@@ -1,6 +1,6 @@
 mkdir cfitsio-prefix
 
-tar -xzvf cfitsio-4.6.4.tzr.gz
+tar -xzvf cfitsio-4.6.4.tar.gz
 if errorlevel 1 exit 1
 
 cd cfitsio-4.6.4
