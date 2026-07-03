@@ -10,8 +10,8 @@ cd build
 
 cmake -G "NMake Makefiles" ^
   %CMAKE_ARGS% ^
-  -D CMAKE_PREFIX_PATH="%SRC_DIR%\cfitsio-prefix" ^
-  -D CMAKE_INSTALL_PREFIX="%SRC_DIR%\cfitsio-prefix" ^
+  -D CMAKE_PREFIX_PATH=%SRC_DIR%\cfitsio-prefix ^
+  -D CMAKE_INSTALL_PREFIX=%SRC_DIR%\cfitsio-prefix ^
   -D TESTS=On ^
   -D UTILS=On ^
   -D BUILD_SHARED_LIBS=Off ^
@@ -33,9 +33,9 @@ if errorlevel 1 exit 1
 cd ..
 cd ..
 
-set FITSIO_USE_SYSTEM_FITSIO="True"
-set FITSIO_SYSTEM_FITSIO_INCLUDEDIR="%SRC_DIR%\cfitsio-prefix\include;%LIBRARY_PREFIX%\include"
-set FITSIO_SYSTEM_FITSIO_LIBDIR="%SRC_DIR%\cfitsio-prefix\lib;%LIBRARY_PREFIX%\lib"
+set FITSIO_USE_SYSTEM_FITSIO=True
+set FITSIO_SYSTEM_FITSIO_INCLUDEDIR=%SRC_DIR%\cfitsio-prefix\include;%LIBRARY_PREFIX%\include
+set FITSIO_SYSTEM_FITSIO_LIBDIR=%SRC_DIR%\cfitsio-prefix\lib;%LIBRARY_PREFIX%\lib
 
 %PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 if errorlevel 1 exit 1
