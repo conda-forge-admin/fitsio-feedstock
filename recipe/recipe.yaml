@@ -31,7 +31,7 @@ requirements:
       else:
         - cmake <4
         - ninja
-        - {{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
+        - ${{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
   host:
@@ -57,7 +57,7 @@ requirements:
       - if: win
         then: 
           - zlib
-          - {{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
+          - ${{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
 
 tests:
   - script:
