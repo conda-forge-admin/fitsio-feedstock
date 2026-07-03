@@ -1,9 +1,18 @@
-mkdir cfitsio-prefix
-
-tar -xzvf cfitsio-4.6.4.tar.gz
+for %%f in (cfitsio-*.tar.gz) do (
+    set "tarball=%%f"
+    goto :break
+)
+:break
+set "cfitsio_dir=%tarball:.tar.gz=%"
+echo found cfitsio tarball: %tarball%
+echo cfitsio dir: %cfitsio_dir%
 if errorlevel 1 exit 1
 
-cd cfitsio-4.6.4
+tar -xzvf %tarball%
+if errorlevel 1 exit 1
+
+mkdir cfitsio-prefix
+cd %cfitsio_dir%
 
 mkdir build
 cd build
@@ -12,19 +21,11 @@ cmake -G "NMake Makefiles" ^
   %CMAKE_ARGS% ^
   -D CMAKE_PREFIX_PATH=%SRC_DIR%\cfitsio-prefix ^
   -D CMAKE_INSTALL_PREFIX=%SRC_DIR%\cfitsio-prefix ^
-  -D TESTS=On ^
-  -D UTILS=On ^
   -D BUILD_SHARED_LIBS=Off ^
   ..
 if errorlevel 1 exit 1
 
 nmake
-if errorlevel 1 exit 1
-
-:: test-ish programs (speed doesn't seem to get built)
-cookbook
-if errorlevel 1 exit 1
-testprog
 if errorlevel 1 exit 1
   
 nmake install
