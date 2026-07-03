@@ -45,7 +45,6 @@ requirements:
     - zlib
   run:
     - python
-    - bzip2
     - setuptools  # the test modules now use pkg_resources
 
   # zlib is bundled
