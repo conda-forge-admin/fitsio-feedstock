@@ -36,6 +36,7 @@ cd ..
 set FITSIO_USE_SYSTEM_FITSIO=True
 set FITSIO_SYSTEM_FITSIO_INCLUDEDIR=%SRC_DIR%\cfitsio-prefix\include;%LIBRARY_PREFIX%\include
 set FITSIO_SYSTEM_FITSIO_LIBDIR=%SRC_DIR%\cfitsio-prefix\lib;%LIBRARY_PREFIX%\lib
+set FITSIO_SYSTEM_FITSIO_HAS_CURL=True
 
 %PYTHON% -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 if errorlevel 1 exit 1
