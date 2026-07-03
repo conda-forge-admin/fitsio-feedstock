@@ -40,7 +40,8 @@ requirements:
     - setuptools
     - setuptools-scm
     - numpy
-    - bzip2
+    - if: unix
+      then: bzip2
     - libcurl
     - zlib
   run:
