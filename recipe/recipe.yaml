@@ -47,7 +47,7 @@ requirements:
     - python
     - setuptools  # the test modules now use pkg_resources
 
-  # zlib is bundled
+  # zlib is bundled on unix, but not on win
   # we put it in host to make configure happy
   ignore_run_exports:
     from_package:
