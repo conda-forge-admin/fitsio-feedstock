@@ -24,10 +24,12 @@ requirements:
         - python
         - cross-python_${{ target_platform }}
         - numpy
-    - libtool
+    - if: unix
+      then:
+        - libtool
+        - make
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
-    - make
   host:
     - python
     - pip
