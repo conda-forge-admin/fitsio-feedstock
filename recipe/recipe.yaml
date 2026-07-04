@@ -46,15 +46,13 @@ requirements:
     - python
     - setuptools  # the test modules now use pkg_resources
 
-  # zlib is bundled on unix, but not on win
-  # we put it in host to make configure happy
+  # zlib is bundled, but is needed for configure / cmake
+  # we put it in host to make configure / cmake happy
   ignore_run_exports:
     from_package:
+      - zlib
       - if: win
-        then: 
-          - ${{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
-        else:
-          - zlib
+        then: ${{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not          
 
 tests:
   - script:
