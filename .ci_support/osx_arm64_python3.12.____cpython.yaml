@@ -30,5 +30,3 @@ python:
 - 3.12.* *_cpython
 target_platform:
 - osx-arm64
-zlib:
-- '1'

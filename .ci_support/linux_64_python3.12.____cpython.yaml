@@ -26,5 +26,3 @@ python:
 - 3.12.* *_cpython
 target_platform:
 - linux-64
-zlib:
-- '1'
