@@ -1,6 +1,6 @@
 context:
   name: "fitsio"
-  version: "1.4.0"
+  version: "1.4.1"
 
 package:
   name: ${{ name }}
@@ -8,12 +8,10 @@ package:
 
 source:
   url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
-  sha256: 7ece7c8234058b5a2c97f7b1259ff396f2d1e91e1cb263ceebd16dde63ab1b9f
+  sha256: cccee0203425d30dac1287c58998f8bb49aea205eb45d4dab338f974bce79084
 
 build:
-  number: 1
-  skip:
-    - win
+  number: 0
 
 requirements:
   build:
@@ -22,33 +20,46 @@ requirements:
         - python
         - cross-python_${{ target_platform }}
         - numpy
-    - libtool
+    - if: unix
+      then:
+        - libtool
+        - make
+      else:
+        - cmake <4
+        - ninja
+        - ${{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not
     - ${{ compiler('c') }}
     - ${{ stdlib("c") }}
-    - make
   host:
     - python
     - pip
     - setuptools
     - setuptools-scm
     - numpy
-    - bzip2
+    - if: unix
+      then: bzip2
     - libcurl
-    - zlib
   run:
     - python
-    - bzip2
-    - setuptools  # the test modules now use pkg_resources
 
-  # zlib is bundled
-  # we put it in host to make configure happy
+  # zlib is bundled, but is needed for configure / cmake
+  # we put it in host to make configure / cmake happy
   ignore_run_exports:
     from_package:
-      - zlib
+      - if: win
+        then: ${{ compiler("cxx") }}  # CMake needs this, but CFITSIO itself does not          
 
 tests:
   - script:
       - pytest --pyargs fitsio.tests
+      - if: unix
+        then:
+          - python -c "import fitsio; assert fitsio.cfitsio_has_bzip2_support()"
+          - python -c "import fitsio; assert fitsio.cfitsio_is_reentrant()"
+        else:
+          - python -c "import fitsio; assert not fitsio.cfitsio_has_bzip2_support()"
+          - python -c "import fitsio; assert not fitsio.cfitsio_is_reentrant()"
+      - python -c "import fitsio; assert fitsio.cfitsio_has_curl_support()"
     requirements:
       run:
         - pytest

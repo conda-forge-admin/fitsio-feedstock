@@ -1,19 +1,13 @@
-bzip2:
-- '1'
 c_compiler:
-- gcc
-c_compiler_version:
-- '14'
+- vs2022
 c_stdlib:
-- sysroot
-c_stdlib_version:
-- '2.17'
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
-docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma9
+cxx_compiler:
+- vs2022
 libcurl:
 - '8'
 numpy:
@@ -23,6 +17,6 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.14.* *_cp314t
+- 3.14.* *_cp314
 target_platform:
-- linux-aarch64
+- win-64
