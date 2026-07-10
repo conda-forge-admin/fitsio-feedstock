@@ -1,19 +1,17 @@
 context:
   name: "fitsio"
-  version: "1.4.0"
+  version: "1.4.1"
 
 package:
   name: ${{ name }}
   version: ${{ version }}
 
 source:
-  git: https://github.com/esheldon/fitsio.git
-  branch: windows-ci
-  # url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
-  # sha256: 7ece7c8234058b5a2c97f7b1259ff396f2d1e91e1cb263ceebd16dde63ab1b9f
+  url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
+  sha256: cccee0203425d30dac1287c58998f8bb49aea205eb45d4dab338f974bce79084
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
