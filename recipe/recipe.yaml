@@ -7,8 +7,10 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
-  sha256: cccee0203425d30dac1287c58998f8bb49aea205eb45d4dab338f974bce79084
+  git: https://github.com/esheldon/fitsio.git
+  branch: patches-for-conda-etc
+  # url: https://github.com/esheldon/fitsio/archive/refs/tags/${{ version }}.tar.gz
+  # sha256: cccee0203425d30dac1287c58998f8bb49aea205eb45d4dab338f974bce79084
 
 build:
   number: 0
@@ -22,7 +24,6 @@ requirements:
         - numpy
     - if: unix
       then:
-        - libtool
         - make
       else:
         - cmake <4
